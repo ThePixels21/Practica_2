@@ -16,6 +16,16 @@ public class Usuario {
 
     public Usuario() {}
 
+    public Usuario(@NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty String email,
+            @NotEmpty @Size(min = 4, max = 10) String password) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+    }
+
+
+
     public String getNombre() {
         return nombre;
     }

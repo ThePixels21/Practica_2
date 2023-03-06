@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+    <h1 th:text="${titulo}"></h1>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:object="${cliente}">
+                <td>Datos</td>
+                <td th:text="*{nombre}"></td>
+                <td th:text="*{apellido}"></td>
+                <td th:text="*{email}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <h2 th:if="${productos.isEmpty()}">No hay productos</h2>
+    <table th:if="${not productos.isEmpty()}">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="producto: ${productos}" th:object="${producto}">
+                <th th:text="*{nombre}"></th>
+                <th th:text="*{desc}"></th>
+                <th th:text="*{precio}"></th>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
